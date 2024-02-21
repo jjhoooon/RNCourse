@@ -1,20 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import StartGameScreens from './screens/StartGameScreens';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World!!!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <StartGameScreens />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
+
