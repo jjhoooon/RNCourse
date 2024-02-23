@@ -4,6 +4,8 @@ import { View, StyleSheet, Text, Alert } from 'react-native';
 import Title from '../components/ui/Title';
 import NumberContainer from '../components/game/NumberContainer';
 import PrimaryButton from '../components/ui/PrimaryButton';
+import InstructionText from '../components/ui/InstructionText';
+import Card from '../components/ui/Card';
 
 function generateRandomBetween(min, max, exclude) {
     const rndNum = Math.floor(Math.random() * (max - min)) + min
@@ -58,17 +60,21 @@ const GameScreen = ({ userNumber, onGameOver }) => {
         <View style={styles.screens}>
             <Title>Opponent's Guess</Title>
             <NumberContainer>{currentGuess}</NumberContainer>
-            <View>
-                <Text>Higher or lower?</Text>
-                <View>
-                    <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
-                        -
-                    </PrimaryButton>
-                    <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
-                        +
-                    </PrimaryButton>
+            <Card>
+                <InstructionText style={styles.InstructionText}>Higher or lower?</InstructionText>
+                <View style={styles.buttonsContainer}>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+                            -
+                        </PrimaryButton>
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
+                            +
+                        </PrimaryButton>
+                    </View>
                 </View>
-            </View>
+            </Card>
             {/* Log Rounds */}
         </View>
     );
@@ -78,6 +84,15 @@ const styles = StyleSheet.create({
     screens: {
         flex: 1,
         padding: 24,
+    },
+    InstructionText: {
+        marginBottom: 12,
+    },
+    buttonsContainer: {
+        flexDirection: 'row'
+    },
+    buttonContainer: {
+        flex: 1
     }
 })
 
