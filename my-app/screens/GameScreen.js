@@ -31,7 +31,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
 
     useEffect(() => {
         if (currentGuess === userNumber) {
-            onGameOver();
+            onGameOver(guessRounds.length);
         }
     }, [currentGuess, userNumber, onGameOver])
 
@@ -102,8 +102,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
                         />
                     }}
                     keyExtractor={(item) => item}
-                >
-                </FlatList>
+                />
             </View>
         </View>
     );
