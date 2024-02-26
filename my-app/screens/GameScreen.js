@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, Alert } from 'react-native';
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
+
 
 import Title from '../components/ui/Title';
 import NumberContainer from '../components/game/NumberContainer';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import InstructionText from '../components/ui/InstructionText';
 import Card from '../components/ui/Card';
+import Colors from '../constants/color';
 
 function generateRandomBetween(min, max, exclude) {
     const rndNum = Math.floor(Math.random() * (max - min)) + min
@@ -65,12 +68,12 @@ const GameScreen = ({ userNumber, onGameOver }) => {
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonContainer}>
                         <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
-                            -
+                            <MaterialIcons name="remove-circle" size={24} color={Colors.accent500} />
                         </PrimaryButton>
                     </View>
                     <View style={styles.buttonContainer}>
                         <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
-                            +
+                            <Entypo name="circle-with-plus" size={24} color={Colors.accent500} />
                         </PrimaryButton>
                     </View>
                 </View>
