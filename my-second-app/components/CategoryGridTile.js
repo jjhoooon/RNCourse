@@ -10,6 +10,7 @@ const CategoryGridTile = ({ title, color }) => {
                     styles.button,
                     pressed ? styles.buttonPressed : null,
                 ]}
+                onPress={onPress}
             >
                 <View style={[styles.innerContainer, { backgroundColor: color }]}>
                     <Text style={styles.title}>{title}</Text>
