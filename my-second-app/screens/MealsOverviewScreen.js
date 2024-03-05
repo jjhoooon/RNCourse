@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
-const MealsOverviewScreen = () => {
+const MealsOverviewScreen = ({ route }) => { // navigator의 Screen은 {navigation, route} 를 props로 제공하는데 각각 어떤 정보를 담고있는가?
+    const catId = route.params.categoryId
+
     return (
         <View style={styles.container}>
-            <Text>Meals OverView</Text>
+            <Text>Meals Overview Screen - {catId}</Text>
         </View>
     );
 }
