@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Pressable, Image, Text } from 'react-native';
+import { View, StyleSheet, Pressable, Image, Text, Platform } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -15,7 +15,7 @@ const MealItem = ({ id, title, imageUrl, affordability, complexity, duration }) 
     }
 
     return (
-        <View style={styles.MealItem}>
+        <View style={styles.mealItem}>
             <Pressable
                 android_ripple={{ color: '#ccc' }}
                 style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
@@ -26,11 +26,16 @@ const MealItem = ({ id, title, imageUrl, affordability, complexity, duration }) 
                         <Image source={{ uri: imageUrl }} style={styles.image} />
                         <Text style={styles.title}>{title}</Text>
                     </View>
-                    <View style={styles.details}>
+                    <MealDetails
+                        duration={duration}
+                        affordability={affordability}
+                        complexity={complexity}
+                    />
+                    {/* <View style={styles.details}>
                         <Text style={styles.detailItem}>{duration}m</Text>
                         <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
                         <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
-                    </View>
+                    </View> */}
                 </View>
             </Pressable>
         </View>
@@ -38,10 +43,34 @@ const MealItem = ({ id, title, imageUrl, affordability, complexity, duration }) 
 }
 
 const styles = StyleSheet.create({
+    mealItem: {
+        margin: 16,
+        borderRadius: 8,
+        overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
+        backgroundColor: 'white',
+        elevation: 4,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowColor: 'black',
+        shadowRadius: 8,
+    },
+    buttonPressed: {
+        opacity: 0.5,
+    },
+    innerContainer: {
+        borderRadius: 12,
+        overflow: 'hidden'
+    },
     image: {
         width: '100%',
         height: 200,
-    }
+    },
+    title: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 18,
+        margin: 8,
+    },
 })
 
 export default MealItem;
