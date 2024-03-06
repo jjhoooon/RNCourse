@@ -25,6 +25,7 @@ const MealsOverviewScreen = ({ route, navigation }) => { // navigator의 Screen�
         const item = itemData.item
 
         const mealItemProps = {
+            id: item.id, // id 추가
             title: item.title,
             imageUrl: item.imageUrl,
             affordability: item.affordability,
