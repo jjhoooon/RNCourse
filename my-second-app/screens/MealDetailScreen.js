@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet, Image, Text, ScrollView } from 'react-native';
+import { View, StyleSheet, Image, Text, ScrollView, Button } from 'react-native';
+import { useLayoutEffect } from 'react';
 
 import MealDetails from '../components/MealDetails';
 import List from '../components/MealDetail/List';
@@ -7,10 +7,24 @@ import Subtitle from '../components/MealDetail/Subtitle';
 import { MEALS } from '../data/dummy-data';
 
 
-const MealDetailScreen = ({ route }) => { //route.params를 통해 screen 어디서나  데이터값 참조가능.
+const MealDetailScreen = ({ route, navigation }) => { //route.params를 통해 screen 어디서나  데이터값 참조가능.
     const mealId = route.params.mealId
 
     const selectedMeal = MEALS.find((meal) => meal.id === mealId)
+
+    function headerButtonPressHandler() {
+
+    }
+    // navigation.setOptions 부수효과 이므로 useEffect 필요, 아니면 화면 깜빡거림.
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => { //JSX코드 반환
+                return <Button title='Tab me' onPress={headerButtonPressHandler} />
+            }
+        })
+    }, [navigation, headerButtonPressHandler])
+
+
 
     return (
         <ScrollView style={styles.rootContainer}>
