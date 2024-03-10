@@ -5,6 +5,7 @@ import MealDetails from '../components/MealDetails';
 import List from '../components/MealDetail/List';
 import Subtitle from '../components/MealDetail/Subtitle';
 import { MEALS } from '../data/dummy-data';
+import IconButton from '../components/IconButton';
 
 
 const MealDetailScreen = ({ route, navigation }) => { //route.params를 통해 screen 어디서나  데이터값 참조가능.
@@ -15,15 +16,21 @@ const MealDetailScreen = ({ route, navigation }) => { //route.params를 통해 s
     function headerButtonPressHandler() {
 
     }
+
     // navigation.setOptions 부수효과 이므로 useEffect 필요, 아니면 화면 깜빡거림.
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => { //JSX코드 반환
-                return <Button title='Tab me' onPress={headerButtonPressHandler} />
+                return (
+                    <IconButton
+                        icon="star"
+                        color="white"
+                        onPress={headerButtonPressHandler}
+                    />
+                )
             }
         })
     }, [navigation, headerButtonPressHandler])
-
 
 
     return (
