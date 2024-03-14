@@ -9,7 +9,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@react-navigation/bottom-tabs": "^6.5.16",
+    "@expo/vector-icons": "^14.0.0",
+    "@react-navigation/bottom-tabs": "^6.5.19",
     "@react-navigation/native": "^6.1.14",
     "@react-navigation/native-stack": "^6.9.22",
     "expo": "~50.0.11",
